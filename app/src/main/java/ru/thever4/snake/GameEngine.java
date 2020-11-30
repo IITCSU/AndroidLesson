@@ -30,6 +30,7 @@ public class GameEngine {
     private Direction direction;
     private boolean inGame = true;
     private int startCount = 3;
+    private int applesEaten;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     public GameEngine(Context context, View parentUI) {
@@ -52,6 +53,7 @@ public class GameEngine {
 
     public void initGame() {
         dotsCount = this.startCount;
+        this.applesEaten = 0;
         this.x = new int[ALL_DOTS];
         this.y = new int[ALL_DOTS];
         direction = Direction.right;
@@ -118,6 +120,7 @@ public class GameEngine {
     private void checkApple(){
         if(x[0] == appleCoords.x && y[0] == appleCoords.y){
             dotsCount++;
+            applesEaten = applesEaten + 1;
             createApple();
         }
     }
